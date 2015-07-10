@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.sw[op]
+/.vagrant
+/.ropeproject
+/tmp
+.sass-cache
+/dist
+/librarian.egg-info
+/.coverage
+/node_modules
+*.log
+/librarian/static/dist
+/librarian/static/assets.json
+.webassets-cache

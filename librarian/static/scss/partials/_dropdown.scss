@@ -1,0 +1,47 @@
+
+@mixin dropdown($icon) {
+  position: relative;
+  
+   .down-arrow {
+    vertical-align: middle;
+    @include icon($icon, yes);
+    display:none;
+
+    &:hover {
+      @incldue icon(#{$icon}_hover, yes);
+    }
+  }
+
+  .dropdown-body {
+    display: none;
+    position: absolute;
+    background-color: $input;
+    border: 1px solid $border;
+    overflow: hidden;
+    padding: 1em .5em;
+    top:3.7em;
+    @include border-radius(7px);
+
+    li:hover {
+      background-color: $sky25;
+    }
+
+  #searchInput {
+    display:none;
+    border-radius: 1em;
+    height: 2em;
+    text-align: center;
+    margin-bottom: .5em;
+    }
+
+}
+
+  .langMenuActive {
+    background-color: $sky;
+    margin: 0;
+    padding: 3em 5em 1.4em 0em;
+    color: white;
+    }
+ 
+
+}

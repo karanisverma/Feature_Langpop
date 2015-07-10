@@ -1,0 +1,5 @@
+include README.rst
+include COPYING
+include CHANGES
+include conf/requirements.txt
+recursive-include librarian *

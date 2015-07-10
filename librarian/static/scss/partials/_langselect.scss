@@ -1,0 +1,344 @@
+@import "compass/css3";
+@import "compass/css3/user-interface";
+
+	.langsearch{
+	width: 200px;
+	max-height: 35px;
+	background: rgba(241, 241, 241, 0);
+	position: fixed;
+	z-index: 10000;
+	top: 17px;
+	left: 160px;
+	@include transform(100% 0);
+	@include transition-timing-function(cubic-bezier(0.7,0,0.3,1));
+	@include transition-property(min-height,width,bottom,right);	
+	@include transition-duration(.4s);
+
+  .open {
+	  width: 100%;
+	  min-height: 100%;
+	  top: 0px;
+	  left: 0px;
+  		}
+
+	}
+
+	.langsearch-input:hover {
+  	font-size: 1.4em;
+	}
+
+	.langsearch.open {
+	background: rgba(241, 241, 241, 1);
+	  width: 100%;
+	  min-height: 100%;
+	  top: 0px;
+	  left: 0px;
+	  position:absolute;
+
+	
+
+	  .langsearch-form {
+	width: 80%;
+  	top: -2em;
+  	height: 10em;
+	@include transform(translate3d(0,3em,0));
+	}
+
+	.langsearch-input {
+	font-size: 7em;
+	border-bottom: solid 1px;
+	}
+
+	.langsearch-input:hover {
+  	font-size: 7em;
+	}
+
+
+ .langsearch-submit {
+	pointer-events: auto;
+	opacity: 1;
+	@include transform(translate3d(-30px,-50%,0) scale3d(1,1,1));
+	@include transition-property(opacity 0.3s, -webkit-transform 0.3s);	
+	@include transition-delay(.5s);
+	
+}
+.langsearch-close {
+	opacity: 1;
+	pointer-events: auto;
+	@include transform(scale3d(1,1,1));
+	@include transition-property(opacity 0.3s, -webkit-transform 0.3s);	
+	transition: opacity 0.3s, transform 0.3s;
+	@include transition-duration(.8s);
+	
+}
+
+ .langsearch-content {
+	opacity: 1;
+	height: auto;
+	overflow: visible; /* this breaks the transition of the children in FF: https://bugzilla.mozilla.org/show_bug.cgi?id=625289 */
+	pointer-events: auto;
+	@include transition-property(opacity 0.5s 10s);
+
+}
+
+
+.langs-column:first-child  {
+	@include transition-delay(.4s);
+}
+
+.langs-column:nth-child(2n) {
+	@include transition-delay(.45s);
+}
+.langs-column:nth-child(2n+1) {
+	@include transition-delay(.45s);
+}
+
+.langs-column:nth-child(3n) {
+	@include transition-delay(.5s);
+}
+
+.langs-column {
+	opacity: 1;
+	@include transform(translate3d(0,0,0));
+	
+}
+
+ ~ .overlay {
+	opacity: 1;
+}
+
+  		}
+
+
+.langsearch-form {
+	width: 100%;
+	height: 40px;
+	margin: 0 auto;
+	position: relative;
+	@include transition-property(width, height, -webkit-transform);	
+	@include transition-duration(.5s);
+	@include transition-timing-function(cubic-bezier(0.7,0,0.3,1));
+	}
+
+	
+
+
+	.langsearch-input {
+
+	width: 100%;
+	height: 100%;
+	padding: 0 10% 0 10px;
+	font-weight: 700;
+	border: none;
+	cursor:pointer;
+	background: transparent;
+	font-size: 0.8em;
+	color: #ec5a62;
+	@include transition-duration(.5s);
+	@include transition-property(font-size 0.4s cubic-bezier(0.7,0,0.3,0.5));
+		
+	}
+	
+
+	.langsearch.hideInput .langsearch-input {
+	color: transparent;
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+
+
+
+.langsearch-input {
+  @include input-placeholder {
+    color: $sky25;
+
+  }
+}
+/*----------------------------------------------------------------------------*/
+
+/* hide placeholder when active in Chrome */
+.gn-search:focus::-webkit-input-placeholder {
+	color: transparent;
+}
+
+input[type="search"] { /* reset normalize */
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;	
+}
+
+.langsearch-input:focus,
+.langsearch-submit:focus {
+	outline: none;
+}
+
+.langsearch-submit {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	text-indent: 100px;
+	overflow: hidden;
+	right: 0;
+	top: 50%;
+	background: transparent url(../img/magnifier.svg) no-repeat center center;
+	background-size: 100%;
+	border: none;
+	pointer-events: none;
+	transform-origin: 50% 50%;
+	opacity: 0;
+	@include transform(translate3d(-30px,-50%,0) scale3d(0,0,1));
+}
+
+
+
+
+.langsearch-close {
+	width: 36px;
+	height: 36px;
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	overflow: hidden;
+	text-indent: 100%;
+	cursor: pointer;
+	pointer-events: none;
+	opacity: 0;
+	-webkit-transform: scale3d(0,0,1);
+	transform: scale3d(0,0,1);
+}
+
+
+.langsearch-close::before,
+.langsearch-close::after {
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 100%;
+	top: 0;
+	left: 50%;
+	border-radius: 3px;
+	opacity: 0.2;
+	background: #000;
+}
+
+.langsearch-close:hover.langsearch-close::before,
+.langsearch-close:hover.langsearch-close::after {
+	opacity: 1;
+}
+.langsearch-close::before {
+	@include transform(rotate(45deg));
+}
+
+.langsearch-close::after {
+	@include transform(rotate(-45deg));
+}
+
+.langsearch-content {
+	color: #333;
+	margin-top: 4.5em;
+	width: 75%;
+	height: 0;
+	overflow: hidden;
+	padding: 0 10.5%;
+	background: #f1f1f1;
+	pointer-events: none;
+	opacity: 0;
+}
+
+
+
+
+
+.langs-column {
+	width: 15%;
+  	margin: 0 5%;
+  	float: left;
+  	text-align: center;
+	opacity: 0;
+	@include transform(translate3d(0,100px,0));
+	transform: translateY(100px);
+	@include transition-property(-webkit-transform 0.5s, opacity 0.5s);	
+	transition: transform 0.5s, opacity 0.5s;
+}
+
+
+
+.langs-column:nth-child(2) {
+	margin: 0 5%;
+}
+
+.langs-column h2 {
+	font-size: 1em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-weight: 800;
+	color: #c2c2c2;
+	padding: 0.5em 0;
+}
+
+.round {
+	float:left;
+	
+}
+
+.langs-media-object {
+	padding: 1em;
+	display: block;
+	margin: 0.3em 0;
+	cursor: pointer;
+	border-radius: 5px;
+	background: rgba(118,117,128,0.05);
+}
+
+.langs-media-object:hover,
+.langs-media-object:focus {
+	background: rgba(118,117,128,0.1);
+}
+
+.langs-media-object img {
+	display: inline-block;
+	width: 50px;	
+	position:relative;
+	top:-5px;
+	vertical-align: middle;
+}
+
+.langs-media-object h3 {
+	vertical-align: middle;
+	font-size: 0.85em;
+	display: inline-block;
+	font-weight: 700;
+	margin: 0 0 0 0;
+	width: calc(100% - 70px);
+	color: rgba(145,145,145,0.7);
+}
+
+.langs-media-object:hover h3 {
+	color: rgba(236,90,98,1);
+}
+
+/* Overlay */
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	opacity: 0;
+	pointer-events: none;
+	@include transition-property(opacity 0.5s);	
+	@include transition-timing-function(cubic-bezier(0.7,0,0.3,1));
+	
+}
+
+
+/*
+	@include transform(100% 0);
+	@include transition-timing-function(cubic-bezier(0.7,0,0.3,1));
+	@include transition-property(min-height, width, top, left);	
+	@include transition-duration(2s);
+*/
+.current{
+	font-weight:bold;
+}
